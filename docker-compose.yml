@@ -1,0 +1,32 @@
+version: '3'
+services:
+  node:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    image: node:16-alpine
+    container_name: formulario
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    tty: true
+    environment:
+      - MYSQL_HOST=database
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+
+    depends_on:
+      - "database"
+  database:
+    container_name: database-form
+    image: mysql:8.0.29
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: formulario
+    ports:
+      - "3306:3306"
