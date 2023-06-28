@@ -30,7 +30,7 @@
       margin: 10px;
     }
 
-    .botao {
+    #return-button {
       margin: -20px 1%;
       font-size: 20px;
       font-family: 'Sansita One', cursive;
@@ -42,7 +42,7 @@
       transition: all 0.3s ease-in-out;
     }
 
-    .botao:hover {
+    #return-button:hover {
       background-color: rgb(6, 71, 6);
       font-size: 20.5px;
       color: white;
@@ -52,7 +52,7 @@
 
 <body>
   <h1>Usuários cadastrados!</h1>
-  <button class="botao" id="botao">Retorne ao menu principal!</button>
+  <button id="return-button">Retorne ao menu principal!</button>
   <ul>
     <% usuarios.forEach(function(usuarios) { %>
       <li>
@@ -76,7 +76,7 @@
 
 
   <script>
-    document.getElementById('botao').onclick = function () {
+    document.getElementById('return-button').onclick = function () {
       location.href = '/';
     }
   </script>
