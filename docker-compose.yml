@@ -1,4 +1,4 @@
-version: '3'
+version: "3.9"
 services:
   node:
     build:
@@ -23,10 +23,16 @@ services:
       - "database"
   database:
     container_name: database-form
-    image: mysql:8.0.29
+    image: mysql:8.0.21
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: formulario
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE
