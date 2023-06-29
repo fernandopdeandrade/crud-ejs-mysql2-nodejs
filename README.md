@@ -6,10 +6,14 @@ Para rodar o projeto.
 
 3 = Certifique-se de ter o docker e docker-compose instalado na máquina
 
-4 = Rode o comando => docker-compose up -d --build
+4 = Rode o comando => npm run compose
 
-5 = Veja se o banco de dados e o container foram criados com o comando => docker ps -a
+5 = Verifique se os containers mysql e node estão "up" com o comando => docker ps -a 
 
-6 = Abra o seu gerenciador de banco de dados, crie o banco e popule a tabela usando o conteúdo do arquivo mysql.db.
+6 = Abra o seu gerenciador de banco de dados, crie e popule a tabela usando o conteúdo do arquivo mysql.db.
  
+7 = Certifique-se de que tem o nodemon instalado na máquina, e rode esse comando para iniciar a aplicação => npm start
+
+8 = Agora abra seu navegador em = localhost:3001
+
  Pronto !!! :)
