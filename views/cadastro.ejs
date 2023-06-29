@@ -5,30 +5,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/cadastro.css" rel="stylesheet" type="text/css" />
+  <link href="/css/cadastro.css" rel="stylesheet" type="text/css" />
   <title>Formulário</title>
 </head>
 
 <body>
-  <h1>
-    Página de cadastro
-  </h1>
-  <button id="return-button">Retorne ao menu principal!</button>
-  <form id="form" method="post">
-    <input type="text" name="nome" id="nome" placeholder="Nome ...">
-    <br>
-    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome ...">
-    <br>
-    <input type="email" name="email" id="email" placeholder="E-mail ...">
-    <br>
-    <input type="password" name="senha" id="senha" placeholder="Senha ...">
-    <br>
-    <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirmação de senha ...">
-    <br>
-    <input type="submit" value="Cadastrar">
-  </form>
+  <main>
+    <h1>Página de cadastro</h1>
+    <button id="return-button">Retorne ao menu principal!</button>
+    <form id="form" method="post">
+      <input type="text" name="nome" id="nome" placeholder="Nome ...">
+      <br>
+      <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome ...">
+      <br>
+      <input type="email" name="email" id="email" placeholder="E-mail ...">
+      <br>
+      <input type="password" name="senha" id="senha" placeholder="Senha ...">
+      <br>
+      <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirmação de senha ...">
+      <br>
+      <input type="submit" value="Cadastrar">
+    </form>
+  </main>
 
-    <script>
+  <footer>
+    <p>Desenvolvido por: <a href="https://github.com/fernandopdeandrade" target="_blank">Fernando Pereira de Andrade</a>
+    </p>
+  </footer>
+
+  <script>
     document.getElementById('return-button').onclick = function () {
       location.href = '/';
     }
