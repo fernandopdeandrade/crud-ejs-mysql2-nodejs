@@ -5,81 +5,45 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/visualizar.css" rel="stylesheet" type="text/css" />
   <title>NodeJS</title>
-  <style>
-    h1 {
-      color: red;
-      text-align: center;
-      font-size: 60px;
-      background-color: black;
-      padding: 20px;
-    }
-
-    ul {
-      border: 5px solid black;
-      color: rgb(255, 0, 0);
-      font-size: 35px;
-      list-style: none;
-      padding: 0;
-      margin: 20px 1%;
-    }
-
-    li {
-      border: 1px solid black;
-      padding: 4px;
-      margin: 10px;
-    }
-
-    #return-button {
-      margin: -20px 1%;
-      font-size: 20px;
-      font-family: 'Sansita One', cursive;
-      padding: 10px 1%;
-      border-radius: 4px;
-      background-color: green;
-      color: black;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-
-    #return-button:hover {
-      background-color: rgb(6, 71, 6);
-      font-size: 20.5px;
-      color: white;
-    }
-  </style>
 </head>
 
 <body>
-  <h1>Usuários cadastrados!</h1>
-  <button id="return-button">Retorne ao menu principal!</button>
-  <ul>
-    <% usuarios.forEach(function(usuarios) { %>
-      <li>
-        Id = <%= usuarios.id %>
-      </li>
-      <li>
-        Nome = <%= usuarios.nome %>
-      </li>
-      <li>
-        Sobrenome = <%= usuarios.sobrenome %>
-      </li>
-      <li>
-        Senha = <%= usuarios.senha %>
-      </li>
-      <li>
-        Confirmação de senha = <%= usuarios.confirmaSenha %>
-      </li>
-      <br>
-      <% }); %>
-  </ul>
+  <main>
+    <h1>Usuários cadastrados!</h1>
+    <button id="return-button">Retorne ao menu principal!</button>
+    <ul>
+      <% usuarios.forEach(function(usuarios) { %>
+        <li>
+          Id = <%= usuarios.id %>
+        </li>
+        <li>
+          Nome = <%= usuarios.nome %>
+        </li>
+        <li>
+          Sobrenome = <%= usuarios.sobrenome %>
+        </li>
+        <li>
+          Senha = <%= usuarios.senha %>
+        </li>
+        <li>
+          Confirmação de senha = <%= usuarios.confirmaSenha %>
+        </li>
+        <br>
+        <% }); %>
+    </ul>
+  </main>
 
+  <footer>
+    <p>Desenvolvido por: <a href="https://github.com/fernandopdeandrade" target="_blank">Fernando Pereira de Andrade</a>
+    </p>
 
-  <script>
-    document.getElementById('return-button').onclick = function () {
-      location.href = '/';
-    }
-  </script>
+    <script>
+      document.getElementById('return-button').onclick = function () {
+        location.href = '/';
+      }
+    </script>
 </body>
 
 </html>
