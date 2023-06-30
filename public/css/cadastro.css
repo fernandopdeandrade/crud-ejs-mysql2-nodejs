@@ -58,7 +58,7 @@
    height: 50px;
    font-size: 20px;
    border: none;
-   border-bottom: 1px solid #000;
+   border-bottom: 3px solid gray;
    outline: none;
  }
 

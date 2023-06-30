@@ -1,12 +1,14 @@
 const express = require("express");
 const path = require("path");
 const mysql2 = require("mysql2");
+const cors = require("cors");
 const app = express();
 const port = 3001;
 
 app.use(express.json());
+app.use(cors());
+
 app.use(express.urlencoded({ extended: true }));
-app.set("stylesheets", path.join(__dirname, "public"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
@@ -23,7 +25,9 @@ db.connect((err) => {
   if (err) {
     console.log(`Não foi possível conectar ao banco de dados: ${err}`);
   }
-  var sql = "SELECT * FROM usuarios";
+
+  let sql = "SELECT * FROM usuarios";
+
   db.query(sql, (_err, results) => {
     console.log(
       `Conectado ao banco de dados!...Quantidade de usuários = ${results.length}`
@@ -40,17 +44,20 @@ app.get("/cadastro", (_req, res) => {
 });
 
 app.post("/cadastro", (req, res) => {
-  console.log("cadastro realizado com sucesso");
   let nome = req.body.nome;
   let sobrenome = req.body.sobrenome;
   let email = req.body.email;
   let senha = req.body.senha;
   let confirmaSenha = req.body.confirmaSenha;
+
   db.query(
     "INSERT INTO usuarios (nome, sobrenome, email, senha, confirmaSenha) VALUES (?, ?, ?, ?, ?)",
     [nome, sobrenome, email, senha, confirmaSenha],
     (_err, _result) => {}
   );
+
+  console.log("cadastro realizado com sucesso");
+
   res.redirect("/");
 });
 
@@ -73,12 +80,15 @@ app.post("/atualizar", (req, res) => {
   let email = req.body.email;
   let senha = req.body.senha;
   let confirmaSenha = req.body.confirmaSenha;
+
   db.query(
     "UPDATE usuarios SET nome = ?, sobrenome = ?, email = ?, senha = ?, confirmaSenha = ? WHERE id = ?",
     [nome, sobrenome, email, senha, confirmaSenha, id],
     (_err, _result) => {}
   );
+
   console.log("Atualização realizada com sucesso");
+
   res.redirect("/");
 });
 
@@ -90,11 +100,14 @@ app.get("/deletar", (_req, res) => {
 
 app.post("/deletar", (req, res) => {
   let id = req.body.id;
-  db.query("DELETE FROM usuarios WHERE id = ?", [id], (_err, _result) => {});
+
+  db.query("DELETE FROM usuarios WHERE id = ?", [id], (_err, _result) => { });
+  
   console.log("Exclusão realizada com sucesso");
+
   res.redirect("/deletar");
 });
 
-app.listen(port, () =>
-  console.log(`Aplicativo de exemplo ouvindo na porta = ${port}!`)
-);
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});

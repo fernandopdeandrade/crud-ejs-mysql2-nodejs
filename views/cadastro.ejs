@@ -14,15 +14,15 @@
     <h1>Página de cadastro</h1>
     <button id="return-button">Retorne ao menu principal!</button>
     <form id="form" method="post">
-      <input type="text" name="nome" id="nome" placeholder="Nome ...">
+      <input type="text" name="nome" id="nome" placeholder="Nome ..." required>
       <br>
-      <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome ...">
+      <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome ..." required>
       <br>
-      <input type="email" name="email" id="email" placeholder="E-mail ...">
+      <input type="email" name="email" id="email" placeholder="E-mail ..." required>
       <br>
-      <input type="password" name="senha" id="senha" placeholder="Senha ...">
+      <input type="password" name="senha" id="senha" placeholder="Senha ..." required>
       <br>
-      <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirmação de senha ...">
+      <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirmação de senha ..." required>
       <br>
       <input type="submit" value="Cadastrar">
     </form>
@@ -34,8 +34,87 @@
   </footer>
 
   <script>
-    document.getElementById('return-button').onclick = function () {
-      location.href = '/';
+    window.onload = function () {
+      document.getElementById('return-button').onclick = function () {
+        location.href = '/';
+      }
+
+      document.getElementById('form').onsubmit = function () {
+        const senha = document.getElementById('senha').value;
+        const confirmaSenha = document.getElementById('confirmaSenha').value;
+
+        if (senha !== confirmaSenha) {
+          alert('As senhas não coincidem!');
+          return false;
+        }
+      }
+
+      const checkEqualPassword = function () {
+        document.getElementById('senha').onkeyup = function () {
+          const senha = document.getElementById('senha').value;
+          const confirmaSenha = document.getElementById('confirmaSenha').value;
+
+          if (senha !== confirmaSenha) {
+            document.getElementById('senha').style.borderColor = 'red';
+            document.getElementById('confirmaSenha').style.borderColor = 'red';
+          } else {
+            document.getElementById('senha').style.borderColor = 'green';
+            document.getElementById('confirmaSenha').style.borderColor = 'green';
+          }
+        }
+
+        document.getElementById('confirmaSenha').onkeyup = function () {
+          const senha = document.getElementById('senha').value;
+          const confirmaSenha = document.getElementById('confirmaSenha').value;
+
+          if (senha !== confirmaSenha) {
+            document.getElementById('senha').style.borderColor = 'red';
+            document.getElementById('confirmaSenha').style.borderColor = 'red';
+          } else {
+            document.getElementById('senha').style.borderColor = 'green';
+            document.getElementById('confirmaSenha').style.borderColor = 'green';
+          }
+        }
+      }
+      checkEqualPassword();
+
+      const checkEmail = function () {
+        document.getElementById('email').onkeyup = function () {
+          const email = document.getElementById('email').value;
+
+          const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
+
+          if (!regexEmail.test(email)) {
+            document.getElementById('email').style.borderColor = 'red';
+          } else {
+            document.getElementById('email').style.borderColor = 'green';
+          }
+        }
+      }
+      checkEmail();
+
+      const checkNomeSobrenome = function () {
+        document.getElementById('nome').onkeyup = function () {
+          const nome = document.getElementById('nome').value;
+
+          if (nome.length < 4) {
+            document.getElementById('nome').style.borderColor = 'red';
+          } else {
+            document.getElementById('nome').style.borderColor = 'green';
+          }
+        }
+
+        document.getElementById('sobrenome').onkeyup = function () {
+          const sobrenome = document.getElementById('sobrenome').value;
+
+          if (sobrenome.length < 4) {
+            document.getElementById('sobrenome').style.borderColor = 'red';
+          } else {
+            document.getElementById('sobrenome').style.borderColor = 'green';
+          }
+        }
+      }
+      checkNomeSobrenome();
     }
   </script>
 </body>
